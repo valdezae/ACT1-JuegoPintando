@@ -1,15 +1,13 @@
-# Auto detect text files and perform LF normalization
-* text=auto
 from turtle import *
 from freegames import vector
-
+#Dibuja una línea de punto a punto
 def line(start, end):
     "Draw line from start to end."
     up()
     goto(start.x, start.y)
     down()
     goto(end.x, end.y)
-
+#Dibuja un cuadrado 
 def square(start, end):
     "Draw square from start to end."
     up()
@@ -22,19 +20,19 @@ def square(start, end):
         left(90)
 
     end_fill()
-
+#Dibuja un círculo
 def circle(start, end):
     "Draw circle from start to end."
     pass  # TODO
-
+#Dibuja un rectángulo
 def rectangle(start, end):
     "Draw rectangle from start to end."
     pass  # TODO
-
+#Dibuja un triángulo
 def triangle(start, end):
     "Draw triangle from start to end."
     pass  # TODO
-
+#Define donde iniciara a dibujar al dar un click 
 def tap(x, y):
     "Store starting point or draw shape."
     start = state['start']
@@ -54,7 +52,9 @@ def store(key, value):
 state = {'start': None, 'shape': line}
 setup(420, 420, 370, 0)
 onscreenclick(tap)
+#listen toma los inputs del teclado
 listen()
+#segun el input anterior ejecuta una de las funciones anteriores 
 onkey(undo, 'u')
 onkey(lambda: color('black'), 'K')
 onkey(lambda: color('white'), 'W')
