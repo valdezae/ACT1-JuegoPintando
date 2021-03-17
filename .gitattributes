@@ -20,18 +20,47 @@ def square(start, end):
         left(90)
 
     end_fill()
-#Dibuja un círculo
-def circle(start, end):
+#Dibuja un círculo 
+def circles(start, end):
     "Draw circle from start to end."
-    pass  # TODO
+    r = (end.x - start.x)
+    up()
+    goto(start.x, start.y)
+    down()
+    begin_fill()
+    circle(r)
+    end_fill()
 #Dibuja un rectángulo
 def rectangle(start, end):
     "Draw rectangle from start to end."
-    pass  # TODO
+    up()
+    goto(start.x, start.y)
+    down()
+    begin_fill()
+    goto(end.x, start.y)
+    left(90)
+    goto(end.x, end.y)
+    left(90)
+    goto(start.x, end.y)
+    left(90)
+    goto(start.x, start.y)
+    left(90)
+    end_fill()
 #Dibuja un triángulo
 def triangle(start, end):
     "Draw triangle from start to end."
-    pass  # TODO
+    up()
+    goto(start.x, start.y)
+    down()
+    begin_fill()
+    goto(end.x, start.y)
+    left(120)
+    forward(end.x - start.x)
+    left(120)
+    forward(end.x - start.x)
+    left(120)
+    end_fill()
+
 #Define donde iniciara a dibujar al dar un click 
 def tap(x, y):
     "Store starting point or draw shape."
@@ -48,7 +77,7 @@ def tap(x, y):
 def store(key, value):
     "Store value in state at key."
     state[key] = value
-
+#establece la posición inicial como ninguna y la forma predeterminada como línea
 state = {'start': None, 'shape': line}
 setup(420, 420, 370, 0)
 onscreenclick(tap)
@@ -61,9 +90,10 @@ onkey(lambda: color('white'), 'W')
 onkey(lambda: color('green'), 'G')
 onkey(lambda: color('blue'), 'B')
 onkey(lambda: color('red'), 'R')
+onkey(lambda: color('magenta'), 'M')
 onkey(lambda: store('shape', line), 'l')
 onkey(lambda: store('shape', square), 's')
-onkey(lambda: store('shape', circle), 'c')
+onkey(lambda: store('shape', circles), 'c')
 onkey(lambda: store('shape', rectangle), 'r')
 onkey(lambda: store('shape', triangle), 't')
 done()
